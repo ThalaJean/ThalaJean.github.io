@@ -1,0 +1,340 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap");
+/* Importing Montserrat font with weights 400 and 600 */
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+  --header-height: 3.5rem; /* Variable for header height */
+
+  /*========== Colors ==========*/
+  /*Color mode HSL(hue, saturation, lightness)*/
+  --black-color: hsl(239, 57%, 18%); /* Dark black color */
+  --black-color-light:  hsl(239, 69%, 25%); /* Lighter shade of green */
+  --black-color-lighten:  hsl(242, 17%, 45%); /* Lightest shade of green
+   */
+  --white-color: #f2efef; /* White color */
+  --body-color: hsl(218, 31%, 95%); /* Light body background color */
+
+  /*========== Font and typography ==========*/
+  /*.5rem = 8px | 1rem = 16px ...*/
+  --body-font: "Montserrat", sans-serif; /* Body font set to Montserrat */
+  --normal-font-size: .938rem; /* Default font size */
+
+  /*========== Font weight ==========*/
+  --font-regular: 400; /* Normal font weight */
+  --font-semi-bold: 600; /* Semi-bold font weight */
+
+  /*========== z index ==========*/
+  --z-tooltip: 10; /* Z-index for tooltips */
+  --z-fixed: 100; /* Z-index for fixed elements */
+}
+
+/*========== Responsive typography ==========*/
+@media screen and (min-width: 1024px) {
+  :root {
+    --normal-font-size: 1rem; /* Increase font size on larger screens */
+  }
+}
+
+/*=============== BASE ===============*/
+* {
+  box-sizing: border-box; /* Ensures consistent box-sizing */
+  padding: 0; /* Removes default padding */
+  margin: 0; /* Removes default margin */
+}
+
+body {
+  min-height: 100vh;
+  background-image: url(bg.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  
+}
+
+ul {
+  list-style: none; /* Removes bullet points from lists */
+  /* Color highlighting when pressed on mobile devices */
+  /*-webkit-tap-highlight-color: transparent;*/ /* Uncomment if needed to remove highlight */
+}
+
+a {
+  text-decoration: none; /* Removes underline from links */
+}
+
+/*=============== REUSABLE CSS CLASSES ===============*/
+.container {
+  max-width: 1120px; /* Maximum width of the container */
+  margin-inline: 1.5rem; /* Horizontal margins */
+}
+
+/*=============== HEADER ===============*/
+.header {
+  position: fixed; /* Fixes the header at the top */
+  top: 0;
+  left: 0;
+  width: 100%; /* Full width header */
+  background-color: var(--black-color); /* Header background color */
+  box-shadow: 0 2px 16px hsla(220, 32%, 8%, .3); /* Adds shadow to the header */
+  z-index: var(--z-fixed); /* Sets z-index for the header */
+}
+
+/*=============== NAV ===============*/
+.nav {
+  height: var(--header-height); /* Sets the height of the nav bar */
+}
+
+.nav__logo, 
+.nav__burger, 
+.nav__close {
+  color: var(--white-color); /* Sets the color for logo, burger and close icons */
+}
+
+.nav__data {
+  height: 100%;
+  display: flex; /* Flexbox for alignment */
+  justify-content: space-between; /* Spreads items apart */
+  align-items: center; /* Centers items vertically */
+}
+
+.nav__logo {
+  display: inline-flex; /* Displays items inline with flex properties */
+  align-items: center; /* Centers items vertically */
+  column-gap: .50rem; /* Space between logo icon and text */
+  font-weight: var(--font-semi-bold); /* Semi-bold font weight for logo text */
+  /* Color highlighting when pressed on mobile devices */
+  /*-webkit-tap-highlight-color: transparent;*/ /* Uncomment if needed to remove highlight */
+}
+
+.nav__logo i {
+  font-weight: initial; /* Resets font weight */
+  font-size: 2rem; /* Large font size for the logo icon */
+}
+
+.nav__toggle {
+  position: relative; /* Positioning for burger and close icons */
+  width: 32px;
+  height: 32px;
+}
+
+.nav__burger, 
+.nav__close {
+  position: absolute; /* Positions icons absolutely within the toggle */
+  width: max-content; /* Width adjusts to content */
+  height: max-content; /* Height adjusts to content */
+  inset: 0; /* Centers icons */
+  margin: auto;
+  font-size: 1.25rem; /* Font size for icons */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: opacity .1s, transform .4s; /* Smooth transition for icon appearance */
+}
+
+.nav__close {
+  opacity: 0; /* Initially hides the close icon */
+}
+
+/* Navigation for mobile devices */
+@media screen and (max-width: 1118px) {
+  .nav__menu {
+    position: absolute; /* Absolute positioning for the menu */
+    left: 0;
+    top: 2.5rem;
+    width: 100%; /* Full width on small screens */
+    height: calc(100vh - 3.5rem); /* Takes full height except header */
+    overflow: auto; /* Allows scrolling if content overflows */
+    pointer-events: none; /* Prevents interaction when menu is closed */
+    opacity: 0; /* Initially hidden */
+    transition: top .4s, opacity .3s; /* Smooth transition for menu appearance */
+  }
+  .nav__menu::-webkit-scrollbar {
+    width: 0; /* Hides scrollbar */
+  }
+  .nav__list {
+    background-color: var(--black-color); /* Background color for the list */
+    padding-top: 1rem; /* Padding at the top of the list */
+  }
+}
+
+.nav__link {
+  color: var(--white-color); /* Text color for links */
+  background-color: var(--black-color); /* Background color for links */
+  font-weight: var(--font-semi-bold); /* Font weight for links */
+  padding: 1.25rem 1.5rem; /* Padding for links */
+  display: flex; /* Flexbox for alignment */
+  justify-content: space-between; /* Space between text and icons */
+  align-items: center; /* Centers items vertically */
+  transition: background-color .3s; /* Smooth transition for background color */
+}
+
+.nav__link:hover {
+  background-color: var(--black-color-light); /* Changes background color on hover */
+}
+
+/* Show menu */
+.show-menu {
+  opacity: 1; /* Makes menu visible */
+  top: 3.5rem; /* Positions menu just below the header */
+  pointer-events: initial; /* Allows interaction */
+}
+
+/* Show icon */
+.show-icon .nav__burger {
+  opacity: 0; /* Hides burger icon */
+  transform: rotate(90deg); /* Rotates burger icon */
+}
+.show-icon .nav__close {
+  opacity: 1; /* Shows close icon */
+  transform: rotate(90deg); /* Rotates close icon */
+}
+
+/*=============== DROPDOWN ===============*/
+.dropdown__item {
+  cursor: pointer; /* Changes cursor to pointer on hover */
+}
+
+.dropdown__arrow {
+  font-size: 1.25rem; /* Font size for dropdown arrow */
+  font-weight: initial; /* Resets font weight */
+  transition: transform .4s; /* Smooth transition for arrow rotation */
+}
+
+.dropdown__link, 
+.dropdown__sublink {
+  padding: 1.25rem 1.25rem 1.25rem 2.5rem; /* Padding for dropdown links */
+  color: var(--white-color); /* Text color for dropdown links */
+  background-color: var(--black-color-light); /* Background color for dropdown links */
+  display: flex; /* Flexbox for alignment */
+  align-items: center; /* Centers items vertically */
+  column-gap: .5rem; /* Space between icon and text */
+  font-weight: var(--font-semi-bold); /* Font weight for dropdown links */
+  transition: background-color .3s; /* Smooth transition for background color */
+}
+
+.dropdown__link i, 
+.dropdown__sublink i {
+  font-size: 1.25rem; /* Font size for icons in dropdown links */
+  font-weight: initial; /* Resets font weight */
+}
+
+.dropdown__link:hover, 
+.dropdown__sublink:hover {
+  background-color: var(--black-color); /* Changes background color on hover */
+}
+
+.dropdown__menu, 
+.dropdown__submenu {
+  max-height: 0; /* Initially hides dropdown content */
+  overflow: hidden; /* Prevents content overflow */
+  transition: max-height .4s ease-out; /* Smooth transition for dropdown height */
+}
+
+/* Show dropdown menu & submenu */
+.dropdown__item:hover .dropdown__menu, 
+.dropdown__subitem:hover > .dropdown__submenu {
+  max-height: 1000px; /* Expands to show content */
+  transition: max-height .4s ease-in; /* Smooth transition for height */
+}
+
+/* Rotate dropdown icon */
+.dropdown__item:hover .dropdown__arrow {
+  transform: rotate(180deg); /* Rotates arrow icon */
+}
+
+/*=============== DROPDOWN SUBMENU ===============*/
+.dropdown__add {
+  margin-left: auto; /* Pushes element to the right */
+}
+
+.dropdown__sublink {
+  background-color: var(--black-color-lighten); /* Background color for submenu links */
+}
+
+/*=============== BREAKPOINTS ===============*/
+/* For small devices */
+@media screen and (max-width: 340px) {
+  .container {
+    margin-inline: 1rem; /* Smaller horizontal margin */
+  }
+
+  .nav__link {
+    padding-inline: 1rem; /* Smaller padding for nav links */
+  }
+}
+
+/* For large devices */
+@media screen and (min-width: 1118px) {
+  .container {
+    margin-inline: auto; /* Centers container */
+  }
+
+  .nav {
+    height: calc(var(--header-height) + 2rem); /* Increases nav height */
+    display: flex; /* Flexbox for alignment */
+    justify-content: space-between; /* Space between elements */
+  }
+  .nav__toggle {
+    display: none; /* Hides toggle button on large screens */
+  }
+  .nav__list {
+    height: 100%; /* Full height for the list */
+    display: flex; /* Flexbox for alignment */
+    column-gap: 3rem; /* Space between list items */
+  }
+  .nav__link {
+    height: 100%; /* Full height for links */
+    padding: 0; /* Removes padding */
+    justify-content: initial; /* Default alignment */
+    column-gap: .25rem; /* Space between items */
+  }
+  .nav__link:hover {
+    background-color: transparent; /* No background color change on hover */
+  }
+
+  .dropdown__item, 
+  .dropdown__subitem {
+    position: relative; /* Relative positioning for dropdowns */
+  }
+
+  .dropdown__menu, 
+  .dropdown__submenu {
+    max-height: initial; /* No height restriction */
+    overflow: initial; /* Allows overflow */
+    position: absolute; /* Absolute positioning for dropdowns */
+    left: 0;
+    top: 6rem; /* Positioning relative to parent */
+    opacity: 0; /* Initially hidden */
+    pointer-events: none; /* Prevents interaction */
+    transition: opacity .3s, top .3s; /* Smooth transition for visibility */
+  }
+
+  .dropdown__link, 
+  .dropdown__sublink {
+    padding-inline: 1rem 3.5rem; /* Padding for links */
+  }
+
+  .dropdown__subitem .dropdown__link {
+    padding-inline: 1rem; /* Smaller padding for sub-links */
+  }
+
+  .dropdown__submenu {
+    position: absolute; /* Absolute positioning for submenu */
+    left: 100%; /* Position submenu to the right of parent */
+    top: .5rem; /* Slight top offset */
+  }
+
+  /* Show dropdown menu */
+  .dropdown__item:hover .dropdown__menu {
+    opacity: 1; /* Makes menu visible */
+    top: 5.5rem; /* Adjusts top positioning */
+    pointer-events: initial; /* Allows interaction */
+    transition: top .3s; /* Smooth transition for top positioning */
+  }
+
+  /* Show dropdown submenu */
+  .dropdown__subitem:hover > .dropdown__submenu {
+    opacity: 1; /* Makes submenu visible */
+    top: 0; /* Adjusts top positioning */
+    pointer-events: initial; /* Allows interaction */
+    transition: top .3s; /* Smooth transition for top positioning */
+  }
+}

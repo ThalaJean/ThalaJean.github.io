@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8"> <!-- Specifies the character encoding for the HTML document -->
+   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensures the website is responsive on all devices -->
+
+   <!--=============== REMIXICONS ===============-->
+   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet"> <!-- Link to Remix Icons for icons used in the menu -->
+
+   <!--=============== CSS ===============-->
+   <link rel="stylesheet" href="assets/css/styles.css"> <!-- Link to the external CSS stylesheet -->
+
+   <title>Responsive Dropdown Menu</title> <!-- Title of the webpage -->
+</head>
+<body>
+   <!--=============== HEADER ===============-->
+   <header class="header"> <!-- Header section for the navigation bar -->
+      <nav class="nav container"> <!-- Navigation bar inside a container for layout purposes -->
+         <div class="nav__data"> <!-- Container for logo and menu toggle icon -->
+            <a href="#" class="nav__logo"> <!-- Link for the logo -->
+               <i class="ri-contrast-2-line"></i>TalaNET_CORP. <!-- Logo icon and text -->
+            </a>
+            
+            <div class="nav__toggle" id="nav-toggle"> <!-- Toggle button for opening and closing the menu -->
+               <i class="ri-menu-line nav__burger"></i> <!-- Icon for menu opening -->
+               <i class="ri-close-line nav__close"></i> <!-- Icon for menu closing -->
+            </div>
+         </div>
+
+         <!--=============== NAV MENU ===============-->
+         <div class="nav__menu" id="nav-menu"> <!-- Container for the navigation menu items -->
+            <ul class="nav__list"> <!-- Unordered list for the main navigation links -->
+               <li><a href="#" class="nav__link">
+                  <i class="ri-home-2-line"></i>   Home</a></li> <!-- Navigation link to Home -->
+               <li><a href="#" class="nav__link">
+                  <i class="ri-folder-info-line"></i> About</a></li> <!-- Navigation link to About -->
+               <li class="dropdown__item"> <!-- List item for the dropdown menu -->
+                  <div class="nav__link"> <!-- Dropdown menu title -->
+                     <i class="ri-service-line"></i>  Services <i class="ri-arrow-down-s-line dropdown__arrow"></i> <!-- Dropdown arrow icon -->
+                  </div>
+
+                  <ul class="dropdown__menu"> <!-- Unordered list for the dropdown menu items -->
+                     <li>
+                        <a href="#" class="dropdown__link">
+                           <i class="ri-code-line"></i>  Web Development <!-- Dropdown link to Web Development -->
+                        </a>                          
+                     </li>
+
+                     <li>
+                        <a href="#" class="dropdown__link">
+                           <i class="ri-smartphone-line"></i>  Mobile App Development <!-- Dropdown link to Mobile App Development -->
+                        </a>
+                     </li>
+
+                     <li>
+                        <a href="#" class="dropdown__link">
+                           <i class="ri-palette-line"></i>  UI/UX Design <!-- Dropdown link to UI/UX Design -->
+                        </a>
+                     </li>
+                  </ul>
+               </li>
+               <li><a href="#" class="nav__link">
+                  <i class="ri-contacts-book-line"></i>  Contact</a></li> <!-- Navigation link to Contact -->
+            </ul>
+         </div>
+      </nav>
+   </header>
+
+   <!--=============== MAIN JS ===============-->
+   <script src="assets/js/main.js"></script> <!-- Link to the external JavaScript file for menu functionality -->
+</body>
+</html>

@@ -1,0 +1,18 @@
+Explanation of the Solution
+HTML Structure: The navigation bar is built using an unordered list (<ul>) inside a <nav> element. Each navigation item is a list item (<li>), and the dropdown functionality is achieved with a nested list under the "Services" item. The class dropdown is used to style and handle dropdown behavior.
+
+CSS Styling: CSS is used to style the navigation bar and dropdown menu. The navigation bar is centered and limited to a maximum width of 800px using the navbar class. Flexbox is used to lay out the navigation items in a row. The dropdown menu is hidden by default using display: none; and is displayed when the user hovers over the "Services" item. Media queries adjust the layout for smaller screen sizes, stacking items vertically.
+
+JavaScript Functionality: JavaScript is used to show and hide the dropdown menu. Event listeners are added to the "Services" link and the dropdown menu to toggle the display of the dropdown menu on hover and leave events. This allows the dropdown to appear when the user hovers over "Services" and disappear when the user moves the mouse away.
+
+
+Design Decisions:
+Centered Navbar: The navigation bar has a max-width of 800px and is centered using margin: 0 auto in the CSS. This keeps it centrally located and ensures it doesn't stretch beyond a reasonable width.
+Flexbox for Layout: Flexbox is used for the navigation items to easily space them out and make the layout flexible for different screen sizes.
+Responsive Design: Media queries are used to adjust the navigation bar for different screen sizes. On screens less than 768px wide, the navigation items stack vertically for better mobile usability.
+Dropdown Menu: The dropdown menu is hidden by default (display: none). It appears when the user hovers over the "Services" item, managed by JavaScript.
+JavaScript for Interaction: Simple JavaScript is used to show and hide the dropdown menu. Event listeners detect mouse hover and apply styles to make the dropdown visible or hidden.
+Responsive Design Implementation:
+The use of Flexbox allows the layout to adjust based on the screen size.
+Media queries handle layout changes for smaller screens, switching the navigation items from a horizontal to a vertical layout.
+This approach ensures the navigation bar is user-friendly across desktops, tablets, and mobile devices.
